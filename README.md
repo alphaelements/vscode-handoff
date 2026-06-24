@@ -1,6 +1,19 @@
-# Handoff — VSCode Extension
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/logo-dark.png">
+    <img src="docs/logo.png" alt="Handoff" width="360">
+  </picture>
+</p>
 
-Visualize and manage [handoff-mcp](https://github.com/alphaelements/handoff-mcp) tasks, sessions, and metrics — right inside VS Code.
+<p align="center">
+  <strong>Visualize and manage <a href="https://github.com/alphaelements/handoff-mcp">handoff-mcp</a> tasks, sessions, and metrics — right inside VS Code.</strong>
+</p>
+
+<p align="center">
+  <a href="https://marketplace.visualstudio.com/items?itemName=alphaelements.handoff-vscode"><img alt="VS Code Marketplace Version" src="https://img.shields.io/visual-studio-marketplace/v/alphaelements.handoff-vscode?style=flat-square&label=Marketplace&color=3B82F6"></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=alphaelements.handoff-vscode"><img alt="Installs" src="https://img.shields.io/visual-studio-marketplace/i/alphaelements.handoff-vscode?style=flat-square&color=34D399"></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=alphaelements.handoff-vscode"><img alt="Rating" src="https://img.shields.io/visual-studio-marketplace/r/alphaelements.handoff-vscode?style=flat-square"></a>
+</p>
 
 ![Dashboard](docs/screenshots/dashboard.png)
 
