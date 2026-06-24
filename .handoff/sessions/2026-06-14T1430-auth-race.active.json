@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "started_at": "2026-06-14T14:30:00.000Z",
+  "branch": "feat/api-v2-migration",
+  "commit": "49ceedf",
+  "dirty_files": ["src/auth/refresh.ts"],
+  "summary": "Investigating auth bug — found token-refresh race condition",
+  "decisions": [
+    {
+      "date": "2026-06-14",
+      "decision": "Single-flight the token refresh",
+      "reason": "Prevents concurrent refreshes invalidating each other",
+      "confidence": "confirmed",
+      "reversible": true
+    }
+  ],
+  "blockers": [],
+  "checklist": [],
+  "handoff_notes": ["t1 needs a single-flight lock around refresh"],
+  "references": [],
+  "context_pointers": [],
+  "environment": {}
+}

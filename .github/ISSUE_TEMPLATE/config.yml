@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: handoff-mcp
+    url: https://github.com/alphaelements/handoff-mcp/issues
+    about: For issues related to the handoff-mcp server (the CLI/MCP tool that creates .handoff/ data), please file there instead.

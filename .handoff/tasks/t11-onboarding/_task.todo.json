@@ -1,0 +1,30 @@
+{
+  "id": "t11",
+  "title": "Onboarding flow redesign",
+  "priority": "medium",
+  "labels": ["frontend"],
+  "created_at": "2026-06-13T10:00:00.000Z",
+  "updated_at": "2026-06-20T21:21:27.096Z",
+  "notes": "Reduce time-to-first-message for new workspaces.",
+  "done_criteria": [
+    {
+      "item": "3-step wizard",
+      "checked": false
+    },
+    {
+      "item": "Sample workspace seeding",
+      "checked": false
+    }
+  ],
+  "schedule": {
+    "start_date": "2026-08-07",
+    "due_date": "2026-08-15",
+    "estimate_hours": 12,
+    "actual_hours": 7.6,
+    "milestone": "v0.5"
+  },
+  "dependencies": [],
+  "order": 7,
+  "completed_at": null,
+  "assignee": "alice"
+}

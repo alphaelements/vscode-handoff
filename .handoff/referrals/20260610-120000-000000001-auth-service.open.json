@@ -1,0 +1,35 @@
+{
+  "id": "ref-20260610-120000-000000001",
+  "source_project": "auth-service",
+  "source_project_dir": "/home/user/pro/auth-service",
+  "created_at": "2026-06-10T12:00:00.000000001+00:00",
+  "referral_type": "bug",
+  "summary": "Token refresh endpoint returns 500 when session expired",
+  "details": "The /auth/refresh endpoint throws an unhandled error when the session has already been invalidated.\n\nSteps to reproduce:\n1. Login and obtain a session token\n2. Wait for session to expire (or manually invalidate)\n3. Call POST /auth/refresh with the expired token\n4. Observe 500 instead of expected 401",
+  "priority": "high",
+  "tasks": [
+    {
+      "title": "Fix token refresh error handling",
+      "priority": "high",
+      "done_criteria": [
+        { "item": "Expired session returns 401 instead of 500", "checked": false },
+        { "item": "Error response includes descriptive message", "checked": false },
+        { "item": "Existing valid refresh still works", "checked": true }
+      ]
+    },
+    {
+      "title": "Add regression tests",
+      "priority": "medium",
+      "done_criteria": [
+        { "item": "Test expired session refresh returns 401", "checked": false },
+        { "item": "Test invalidated session refresh returns 401", "checked": false }
+      ]
+    }
+  ],
+  "context": {
+    "branch": "main",
+    "commit": "abc1234",
+    "error_log": "TypeError: Cannot read property 'expiresAt' of null",
+    "affected_endpoint": "POST /auth/refresh"
+  }
+}

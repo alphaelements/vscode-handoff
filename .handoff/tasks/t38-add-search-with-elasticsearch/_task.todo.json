@@ -1,0 +1,29 @@
+{
+  "id": "t38",
+  "title": "Add search with Elasticsearch",
+  "priority": "medium",
+  "labels": ["backend", "api"],
+  "created_at": "2026-06-26T10:00:00.000Z",
+  "updated_at": "2026-06-20T01:35:10.011Z",
+  "notes": "",
+  "done_criteria": [
+    {
+      "item": "Add search with Elasticsearch - step 1",
+      "checked": false
+    },
+    {
+      "item": "Add search with Elasticsearch - step 2",
+      "checked": false
+    }
+  ],
+  "schedule": {
+    "start_date": "2026-08-12",
+    "due_date": "2026-08-14",
+    "estimate_hours": 3,
+    "actual_hours": 0,
+    "milestone": "v0.3"
+  },
+  "dependencies": [],
+  "order": 38,
+  "assignee": "carol"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "t30",
+  "title": "Create API versioning strategy",
+  "priority": "low",
+  "labels": ["infra", "ci"],
+  "created_at": "2026-06-18T10:00:00.000Z",
+  "updated_at": "2026-06-20T01:35:09.123Z",
+  "notes": "",
+  "done_criteria": [
+    {
+      "item": "Create API versioning strategy - step 1",
+      "checked": true
+    },
+    {
+      "item": "Create API versioning strategy - step 2",
+      "checked": false
+    }
+  ],
+  "schedule": {
+    "start_date": "2026-07-15",
+    "due_date": "2026-07-21",
+    "estimate_hours": 7,
+    "actual_hours": 2,
+    "milestone": "v0.5"
+  },
+  "dependencies": [],
+  "order": 30,
+  "completed_at": null,
+  "assignee": "bob"
+}

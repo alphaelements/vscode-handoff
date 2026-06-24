@@ -1,0 +1,28 @@
+{
+  "id": "t22",
+  "title": "Implement SSO with SAML",
+  "priority": "high",
+  "labels": ["frontend", "perf"],
+  "created_at": "2026-06-10T10:00:00.000Z",
+  "updated_at": "2026-06-20T01:35:08.127Z",
+  "notes": "",
+  "done_criteria": [
+    {
+      "item": "Implement SSO with SAML - step 1",
+      "checked": false
+    },
+    {
+      "item": "Implement SSO with SAML - step 2",
+      "checked": false
+    }
+  ],
+  "schedule": {
+    "start_date": "2026-06-18",
+    "due_date": "2026-06-30",
+    "estimate_hours": 11,
+    "actual_hours": 8
+  },
+  "dependencies": [],
+  "order": 22,
+  "assignee": "carol"
+}

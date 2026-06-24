@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "ended_at": "2026-06-14T11:40:00.000Z",
+  "branch": "feat/observability",
+  "commit": "a1b2c3d",
+  "dirty_files": [],
+  "summary": "Completed Prometheus metrics integration, wired Grafana",
+  "decisions": [
+    {
+      "date": "2026-06-14",
+      "decision": "RED method dashboards",
+      "reason": "Standard, easy to read",
+      "confidence": "confirmed",
+      "reversible": true
+    }
+  ],
+  "blockers": [],
+  "checklist": [],
+  "handoff_notes": [],
+  "references": [],
+  "context_pointers": [],
+  "environment": {}
+}

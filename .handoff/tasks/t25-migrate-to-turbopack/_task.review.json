@@ -1,0 +1,29 @@
+{
+  "id": "t25",
+  "title": "Migrate to Turbopack",
+  "priority": "high",
+  "labels": ["infra"],
+  "created_at": "2026-06-13T10:00:00.000Z",
+  "updated_at": "2026-06-20T01:44:40.122Z",
+  "notes": "",
+  "done_criteria": [
+    {
+      "item": "Migrate to Turbopack - step 1",
+      "checked": true
+    },
+    {
+      "item": "Migrate to Turbopack - step 2",
+      "checked": false
+    }
+  ],
+  "schedule": {
+    "start_date": "2026-06-25",
+    "due_date": "2026-06-28",
+    "estimate_hours": 2,
+    "actual_hours": 0,
+    "milestone": "v0.5"
+  },
+  "dependencies": [],
+  "order": 25,
+  "assignee": "carol"
+}

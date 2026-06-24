@@ -1,0 +1,12 @@
+{
+  "id": "ref-20260608-150000-000000003",
+  "source_project": "infra",
+  "source_project_dir": "/home/user/pro/infra",
+  "created_at": "2026-06-08T15:00:00.000000003+00:00",
+  "referral_type": "info",
+  "summary": "Database migration completed for user_sessions table",
+  "details": "FYI: The user_sessions table has been migrated to the new schema.",
+  "priority": "low",
+  "tasks": [],
+  "context": {}
+}

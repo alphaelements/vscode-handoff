@@ -1,0 +1,74 @@
+# handoff-mcp project config
+labels = ["api"]
+project_name = "Nimbus — Realtime Collaboration API"
+version = "0.4"
+default_branch = "main"
+
+[effort_budget]
+total_hours = 380
+
+[calendar]
+work_end_hour = 20
+work_start_hour = 8
+closed_weekdays = ["sun", "sat"]
+closed_dates = []
+open_dates = []
+schedule_mode = "manual"
+overwork_limit_percent = 150
+
+[calendar.day_hours]
+wed = 3
+fri = 4
+
+[assignees.alice]
+closed_dates = ["2026-06-23"]
+open_dates = ["2026-06-21"]
+closed_weekdays = ["mon", "tue"]
+display_name = "Alice Chen"
+color = "#0097A7"
+work_hours_per_day = 8
+
+[assignees.bob]
+closed_weekdays = ["sun", "sat"]
+display_name = "Bob Martinez"
+color = "#E05490"
+work_hours_per_day = 6
+day_hours = { fri = 4 }
+
+[assignees.carol]
+open_dates = ["2026-06-17"]
+closed_weekdays = ["sun", "sat"]
+display_name = "Carol Kim"
+color = "#5C6BC0"
+work_hours_per_day = 8
+
+[milestones."v0.3"]
+date = "2026-06-20"
+color = "#FF6B35"
+description = "GraphQL & search foundations"
+
+[milestones."v0.4"]
+date = "2026-07-07"
+color = "#0097A7"
+description = "API migration & stability"
+
+[milestones."v0.5"]
+date = "2026-08-01"
+color = "#5C6BC0"
+description = "Beta — full feature set"
+
+[milestones."v0.6"]
+date = "2026-09-01"
+color = "#2E7D32"
+description = "V1.0 GA — production release"
+
+[gantt_view]
+workload_view = "total"
+group_by_assignee = false
+filter_assignee = "alice"
+mode = "compare"
+zoom = "day"
+show_workload = true
+group_by_milestone = false
+sort = "start"
+

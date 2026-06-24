@@ -1,0 +1,30 @@
+{
+  "id": "t19",
+  "title": "Create E2E smoke tests",
+  "priority": "high",
+  "labels": ["frontend", "ux"],
+  "created_at": "2026-06-07T10:00:00.000Z",
+  "updated_at": "2026-06-20T04:56:43.228Z",
+  "notes": "",
+  "done_criteria": [
+    {
+      "item": "Create E2E smoke tests - step 1",
+      "checked": false
+    },
+    {
+      "item": "Create E2E smoke tests - step 2",
+      "checked": false
+    }
+  ],
+  "schedule": {
+    "start_date": "2026-07-04",
+    "due_date": "2026-07-06",
+    "estimate_hours": 8,
+    "actual_hours": 7.7,
+    "milestone": "v0.4"
+  },
+  "dependencies": [],
+  "order": 19,
+  "completed_at": null,
+  "assignee": "carol"
+}

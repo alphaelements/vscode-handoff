@@ -1,0 +1,59 @@
+{
+  "version": 2,
+  "id": "s-20260614-180000-000002",
+  "started_at": "2026-06-14T18:00:00.000Z",
+  "ended_at": "2026-06-14T19:30:00.000Z",
+  "branch": "refactor/auth-module",
+  "commit": "a1b2c3def567890",
+  "summary": "Auth module refactoring — paused for higher priority bug fix",
+  "decisions": [
+    {
+      "decision": "Extract token service to separate module",
+      "reason": "Reduces coupling with session management",
+      "confidence": "confirmed"
+    },
+    {
+      "decision": "Keep backward-compatible API surface",
+      "reason": "Other services depend on current interface",
+      "confidence": "estimated",
+      "reversible": true
+    }
+  ],
+  "blockers": ["Auth bug fix (#42) must merge first", "Token service tests need mock updates"],
+  "checklist": [
+    { "item": "Split token service", "checked": true, "owner": "ai" },
+    { "item": "Update unit tests", "checked": false, "owner": "ai" },
+    { "item": "Manual QA on staging", "checked": false, "owner": "user" }
+  ],
+  "handoff_notes": [
+    { "note": "Resume after auth bug fix is merged", "category": "context" },
+    { "note": "Tests will break until token service split is complete", "category": "caution" },
+    { "note": "Consider adding integration tests for token rotation", "category": "suggestion" }
+  ],
+  "references": [
+    { "label": "MR#12 Auth refactor", "uri": "https://gitlab.example.com/mr/12", "type": "mr" },
+    {
+      "label": "RFC: Token service design",
+      "uri": "https://docs.example.com/rfc/token-service",
+      "type": "doc"
+    }
+  ],
+  "context_pointers": [
+    {
+      "path": "src/auth/token.ts",
+      "lines": "20-80",
+      "reason": "Token service extraction in progress"
+    },
+    {
+      "path": "src/auth/session.ts",
+      "lines": "45-60",
+      "reason": "Session manager needs token service import updated"
+    }
+  ],
+  "environment": {
+    "NODE_ENV": "development",
+    "AUTH_PROVIDER": "keycloak",
+    "TOKEN_ROTATION": "enabled"
+  },
+  "dirty_files": ["src/auth/token.ts", "src/auth/session.ts", "test/auth.test.ts"]
+}

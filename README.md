@@ -1,93 +1,222 @@
-# vscode-handoff
+# Handoff — VSCode Extension
 
-Public docs, issue templates, and sample projects for the Handoff VSCode extension
+Visualize and manage [handoff-mcp](https://github.com/alphaelements/handoff-mcp) tasks, sessions, and metrics — right inside VS Code.
 
-## Getting started
+![Dashboard](docs/screenshots/dashboard.png)
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## Features
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+**Task Explorer** — Tree view with status icons, priority badges, and milestone filtering. Click any task to open its detail panel with done-criteria checklist, schedule, and time tracking.
 
-## Add your files
+**Dashboard** — Project overview showing task counts by status, completion percentage, effort budget burn-down, Kanban board, work timeline, and recent activity feed.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+**Gantt Chart** — Interactive timeline with month/day headers, drag-to-reschedule, milestone grouping, and auto-scroll to today.
+
+![Gantt Chart](docs/screenshots/gantt-chart.png)
+
+**Kanban Board** — Drag-and-drop cards across status columns (todo / in_progress / review / done). Status changes write back to `.handoff/` automatically.
+
+**Metrics Panel** — Effort hours (estimated vs actual), velocity trends, session duration analytics, and filterable label/milestone breakdowns.
+
+![Metrics](docs/screenshots/metrics.png)
+
+**Time Tracker** — Start/stop timer linked to the active task. Idle detection pauses automatically. Accumulated time persists across VS Code restarts.
+
+**Session Browser** — Browse AI session history with summaries, decisions, blockers, and file pointers from each handoff.
+
+**Effort Budget** — Configure total project hours in `config.toml`. The dashboard shows remaining budget and burn rate.
+
+## Setup
+
+### 1. Install handoff-mcp (the MCP server)
+
+This extension visualizes data created by [handoff-mcp](https://github.com/alphaelements/handoff-mcp) — an MCP server that gives AI coding agents persistent memory across sessions. Install it first:
+
+```bash
+npm install -g handoff-mcp-server
+```
+
+Then register it in Claude Code. Run:
+
+```bash
+claude mcp add -s user handoff -- handoff-mcp
+```
+
+The `-s user` flag registers it globally (available in all projects). You can verify with `claude mcp get handoff`.
+
+Or manually add to `~/.claude.json`:
+
+```json
+{
+  "mcpServers": {
+    "handoff": {
+      "type": "stdio",
+      "command": "handoff-mcp",
+      "args": []
+    }
+  }
+}
+```
+
+### 2. Register the skill (optional but recommended)
+
+handoff-mcp provides a [skill file](https://github.com/alphaelements/handoff-mcp/tree/main/skills/handoff) that teaches the agent to automatically load/save context. Copy it to your Claude Code user skills directory:
+
+**From npm** (if you installed globally in step 1):
+
+```bash
+cp -r $(npm root -g)/handoff-mcp-server/skills/handoff ~/.claude/skills/
+```
+
+**From GitHub**:
+
+```bash
+git clone --depth 1 https://github.com/alphaelements/handoff-mcp.git /tmp/handoff-mcp
+cp -r /tmp/handoff-mcp/skills/handoff ~/.claude/skills/
+```
+
+With the skill installed, the agent will automatically call `handoff_load_context` at session start and `handoff_save_context` at session end — no manual prompting needed.
+
+### 3. Add to your project's CLAUDE.md
+
+Add the following to your project's `CLAUDE.md` so the agent uses handoff consistently across sessions:
+
+```markdown
+## Session Handoff
+
+This project uses handoff-mcp for session continuity.
+
+- **Session start**: Call `handoff_load_context` to load previous session state.
+  If not initialized, call `handoff_init` with the project name.
+  If `session_guidance` is present, immediately call `handoff_save_context`
+  with `session_status: "active"` to establish a persistent session before
+  starting work.
+- **Session end**: Call `handoff_save_context` with a summary, decisions, and blockers.
+- **During work**: Use `handoff_update_task` to track progress.
+  Mark tasks `in_progress` when starting, `done` when complete.
+```
+
+### 4. Initialize your project
+
+In an AI coding session (e.g. Claude Code), ask the agent to initialize handoff:
 
 ```
-cd existing_repo
-git remote add origin http://gitlab.home:8888/apro/mcp/vscode-handoff.git
-git branch -M main
-git push -uf origin main
+> Initialize handoff for this project
 ```
 
-## Integrate with your tools
+This creates a `.handoff/` directory in your project root with `config.toml` and empty `tasks/` and `sessions/` directories.
 
-- [ ] [Set up project integrations](http://gitlab.home:8888/apro/mcp/vscode-handoff/-/settings/integrations)
+### 5. Install this extension
 
-## Collaborate with your team
+Search **"Handoff"** in the VS Code Marketplace, or run:
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+```
+ext install alphaelements.handoff-vscode
+```
 
-## Test and Deploy
+### 6. Open your project
 
-Use the built-in continuous integration in GitLab.
+Open the folder containing `.handoff/` in VS Code. The extension activates automatically:
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+- **Task Explorer** appears in the sidebar
+- **Dashboard** is available via `Ctrl+Shift+P` / `Cmd+Shift+P` → `Handoff: Open Dashboard`
+- **Status Bar** shows task counts and active timer
 
-***
+### Requirements
 
-# Editing this README
+- VS Code 1.90+
+- A project with a `.handoff/` directory (created by [handoff-mcp](https://github.com/alphaelements/handoff-mcp))
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+### Try it without handoff-mcp
 
-## Suggestions for a good README
+Clone this repo and open it in VS Code — it includes a `.handoff/` directory with realistic demo data (42 tasks, sessions, milestones, and effort budget). No MCP server needed to explore the UI.
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+## Commands
 
-## Name
-Choose a self-explaining name for your project.
+All commands are available via the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`):
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+| Command | Description |
+|---------|-------------|
+| `Handoff: Open Dashboard` | Open the main dashboard panel |
+| `Handoff: Open Gantt Chart` | Open the Gantt chart |
+| `Handoff: Open Metrics` | Open the metrics panel |
+| `Handoff: Open Team` | Open the team panel |
+| `Handoff: Open Task` | Open a task detail panel |
+| `Handoff: Focus on Handoff View` | Show the task explorer sidebar |
+| `Handoff: Refresh Tasks` | Re-scan `.handoff/` for changes |
+| `Handoff: Create Task` | Create a new task via quick pick |
+| `Handoff: Filter Tasks` | Set filter conditions |
+| `Handoff: Set Sort` | Change task sort order |
+| `Handoff: Set Status` | Change task status |
+| `Handoff: Set Priority` | Change task priority |
+| `Handoff: Set Milestone` | Assign a milestone |
+| `Handoff: Edit Schedule` | Edit start date, due date, and estimates |
+| `Handoff: Add Dependency` | Add a task dependency |
+| `Handoff: Remove Dependency` | Remove a task dependency |
+| `Handoff: Toggle Done Criterion` | Check/uncheck a done criterion |
+| `Handoff: Set Display Order` | Set task display order |
+| `Handoff: Log Time` | Log hours to a task |
+| `Handoff: Pause Timer` | Pause the running timer |
+| `Handoff: Stop Timer` | Stop timer and save elapsed time |
+| `Handoff: Cancel Timer` | Discard timer without saving |
+| `Handoff: Timer Actions` | Quick pick for timer controls |
+| `Handoff: Set Referral Status` | Update a cross-project referral status |
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+## Configuration
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+Key settings under `handoff.*` in VS Code Settings:
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `handoff.autoRefresh` | `true` | Watch `.handoff/` for changes and refresh automatically |
+| `handoff.locale` | `"auto"` | UI language (`en` or `ja`). `auto` = follow VS Code |
+| `handoff.defaultView` | `dashboard` | Default panel view when opening Handoff |
+| `handoff.statusBar.enabled` | `true` | Show task count and timer in the status bar |
+| `handoff.gantt.defaultScale` | `day` | Gantt chart time scale (`day` or `week`) |
+| `handoff.timeTracker.idleTimeoutMinutes` | `3` | Minutes of inactivity before pausing the timer |
+| `handoff.taskExplorer.sortBy` | `order` | Default sort: `order`, `priority`, `updated`, `created`, `due` |
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+For the full list of 22 settings plus `config.toml` reference, see [Configuration](docs/wiki/Configuration.md).
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+## Project Structure
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+The extension reads from the `.handoff/` directory created by [handoff-mcp](https://github.com/alphaelements/handoff-mcp):
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+```
+your-project/
+└── .handoff/
+    ├── config.toml          # Project name, effort budget
+    ├── tasks/
+    │   ├── t1-auth/
+    │   │   └── _task.done.json
+    │   └── t2-api/
+    │       └── _task.in_progress.json
+    └── sessions/
+        └── s-20260619-.../
+            └── session.json
+```
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+Task status is encoded in the filename: `_task.todo.json`, `_task.in_progress.json`, `_task.review.json`, `_task.done.json`.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+## Demo Data
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+This repository includes a `.handoff/` directory with a realistic sample project ("Nimbus — Realtime Collaboration API") containing 42 tasks across multiple milestones, 6 AI sessions, effort budgets, assignee calendars, and more. Clone the repo, open it in VS Code, and the extension will pick it up automatically.
+
+## Issues & Feedback
+
+Found a bug or have a feature request? Please [open an issue](https://github.com/alphaelements/handoff-vscode/issues/new/choose).
+
+## Documentation
+
+For detailed guides on each feature, see the [Wiki](docs/wiki/Home.md):
+
+[Getting Started](docs/wiki/Getting-Started.md) · [Task Explorer](docs/wiki/Task-Explorer.md) · [Task Detail](docs/wiki/Task-Detail.md) · [Dashboard](docs/wiki/Dashboard.md) · [Gantt Chart](docs/wiki/Gantt-Chart.md) · [Metrics](docs/wiki/Metrics.md) · [Time Tracker](docs/wiki/Time-Tracker.md) · [Session Browser](docs/wiki/Session-Browser.md) · [Team Panel](docs/wiki/Team-Panel.md) · [Configuration](docs/wiki/Configuration.md) · [FAQ](docs/wiki/FAQ.md)
+
+## Links
+
+- [handoff-mcp](https://github.com/alphaelements/handoff-mcp) — The MCP server that creates the `.handoff/` data this extension visualizes
+- [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=alphaelements.handoff-vscode)
 
 ## License
-For open source projects, say how it is licensed.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Source code is proprietary (All rights reserved). This repository contains documentation, examples, and issue templates.
