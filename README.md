@@ -33,7 +33,7 @@
 
 ![Metrics](docs/screenshots/metrics.png)
 
-**Time Tracker** — Start/stop timer linked to the active task. Idle detection pauses automatically. Accumulated time persists across VS Code restarts.
+**Time Tracker** — Start/stop timer linked to the active task. Idle detection pauses automatically. Accumulated time persists across VS Code restarts. AI agents can control the timer remotely via [handoff-mcp](https://github.com/alphaelements/handoff-mcp) — start, stop, pause, and resume from the coding session.
 
 **Session Browser** — Browse AI session history with summaries, decisions, blockers, and file pointers from each handoff.
 
