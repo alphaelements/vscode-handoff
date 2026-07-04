@@ -2,6 +2,27 @@
 
 All notable changes to the Handoff VSCode extension will be documented here.
 
+## [0.7.0] — 2026-07-05
+
+### Added
+
+- **Multi-Session Support** — Session type extension with parent-child tree, fork/merge commands, session switching, and task session filter
+- **Session Timeline** — SVG fork graph visualization (newest-first, git log style) with timeline filter
+- **GUI Action Buttons** — Inline action buttons on task items (status, log time), session items (copy ID, fork, switch), and referral items (set status). Title bar buttons on Sessions and Referrals views
+- **Session Status Grouping** — Sessions panel now groups by status (Active > Paused > Open > Closed) with collapsed Closed group, like the task explorer
+- **Session Description** — Shows branch · commit · timeline info on each session row
+- **Gantt Dependency Fixes** — Dependency clamping, group move undo, auto-schedule improvements
+- **Dashboard Drill-Down** — Click KPI cards to filter, AI estimate multiplier dedup, metrics adjusted display
+- **AI Estimate Multiplier** — Editable from settings and team panel
+- **Effort Donut** — AI-adjusted display with overrun visualization
+- **Session Loop v2** — Multi-agent workflow with parameterizable session-execute
+
+### Fixed
+
+- **Flaky Timer Test** — Increased timeout for flood test to prevent intermittent CI failure
+- **Lint Environment** — Resolved WebView lint configuration issues
+- **Auto-Schedule** — Fixed started_at handling and findSlot hang with cycle validation
+
 ## [0.6.0] — 2026-06-28
 
 ### Added
