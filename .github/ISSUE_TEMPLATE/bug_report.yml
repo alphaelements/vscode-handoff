@@ -1,7 +1,7 @@
 name: Bug Report
 description: Report a bug in the Handoff VSCode extension
-title: "[Bug]: "
-labels: ["bug"]
+title: '[Bug]: '
+labels: ['bug']
 body:
   - type: markdown
     attributes:
@@ -12,8 +12,8 @@ body:
     id: vscode-version
     attributes:
       label: VS Code Version
-      description: "Run `code --version` or check Help > About"
-      placeholder: "e.g. 1.92.0"
+      description: 'Run `code --version` or check Help > About'
+      placeholder: 'e.g. 1.92.0'
     validations:
       required: true
 
@@ -21,8 +21,8 @@ body:
     id: extension-version
     attributes:
       label: Extension Version
-      description: "Check Extensions panel > Handoff"
-      placeholder: "e.g. 0.5.0"
+      description: 'Check Extensions panel > Handoff'
+      placeholder: 'e.g. 0.5.0'
     validations:
       required: true
 
@@ -42,7 +42,7 @@ body:
     attributes:
       label: What happened?
       description: A clear description of the bug.
-      placeholder: "When I open the Dashboard, the Gantt chart shows..."
+      placeholder: 'When I open the Dashboard, the Gantt chart shows...'
     validations:
       required: true
 
@@ -70,7 +70,7 @@ body:
     id: logs
     attributes:
       label: Output Log
-      description: "Paste any relevant output from the Handoff output channel (Cmd+Shift+U > Handoff)."
+      description: 'Paste any relevant output from the Handoff output channel (Cmd+Shift+U > Handoff).'
       render: shell
     validations:
       required: false

@@ -148,46 +148,46 @@ Clone this repo and open it in VS Code — it includes a `.handoff/` directory w
 
 All commands are available via the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`):
 
-| Command | Description |
-|---------|-------------|
-| `Handoff: Open Dashboard` | Open the main dashboard panel |
-| `Handoff: Open Gantt Chart` | Open the Gantt chart |
-| `Handoff: Open Metrics` | Open the metrics panel |
-| `Handoff: Open Team` | Open the team panel |
-| `Handoff: Open Task` | Open a task detail panel |
-| `Handoff: Focus on Handoff View` | Show the task explorer sidebar |
-| `Handoff: Refresh Tasks` | Re-scan `.handoff/` for changes |
-| `Handoff: Create Task` | Create a new task via quick pick |
-| `Handoff: Filter Tasks` | Set filter conditions |
-| `Handoff: Set Sort` | Change task sort order |
-| `Handoff: Set Status` | Change task status |
-| `Handoff: Set Priority` | Change task priority |
-| `Handoff: Set Milestone` | Assign a milestone |
-| `Handoff: Edit Schedule` | Edit start date, due date, and estimates |
-| `Handoff: Add Dependency` | Add a task dependency |
-| `Handoff: Remove Dependency` | Remove a task dependency |
-| `Handoff: Toggle Done Criterion` | Check/uncheck a done criterion |
-| `Handoff: Set Display Order` | Set task display order |
-| `Handoff: Log Time` | Log hours to a task |
-| `Handoff: Pause Timer` | Pause the running timer |
-| `Handoff: Stop Timer` | Stop timer and save elapsed time |
-| `Handoff: Cancel Timer` | Discard timer without saving |
-| `Handoff: Timer Actions` | Quick pick for timer controls |
-| `Handoff: Set Referral Status` | Update a cross-project referral status |
+| Command                          | Description                              |
+| -------------------------------- | ---------------------------------------- |
+| `Handoff: Open Dashboard`        | Open the main dashboard panel            |
+| `Handoff: Open Gantt Chart`      | Open the Gantt chart                     |
+| `Handoff: Open Metrics`          | Open the metrics panel                   |
+| `Handoff: Open Team`             | Open the team panel                      |
+| `Handoff: Open Task`             | Open a task detail panel                 |
+| `Handoff: Focus on Handoff View` | Show the task explorer sidebar           |
+| `Handoff: Refresh Tasks`         | Re-scan `.handoff/` for changes          |
+| `Handoff: Create Task`           | Create a new task via quick pick         |
+| `Handoff: Filter Tasks`          | Set filter conditions                    |
+| `Handoff: Set Sort`              | Change task sort order                   |
+| `Handoff: Set Status`            | Change task status                       |
+| `Handoff: Set Priority`          | Change task priority                     |
+| `Handoff: Set Milestone`         | Assign a milestone                       |
+| `Handoff: Edit Schedule`         | Edit start date, due date, and estimates |
+| `Handoff: Add Dependency`        | Add a task dependency                    |
+| `Handoff: Remove Dependency`     | Remove a task dependency                 |
+| `Handoff: Toggle Done Criterion` | Check/uncheck a done criterion           |
+| `Handoff: Set Display Order`     | Set task display order                   |
+| `Handoff: Log Time`              | Log hours to a task                      |
+| `Handoff: Pause Timer`           | Pause the running timer                  |
+| `Handoff: Stop Timer`            | Stop timer and save elapsed time         |
+| `Handoff: Cancel Timer`          | Discard timer without saving             |
+| `Handoff: Timer Actions`         | Quick pick for timer controls            |
+| `Handoff: Set Referral Status`   | Update a cross-project referral status   |
 
 ## Configuration
 
 Key settings under `handoff.*` in VS Code Settings:
 
-| Setting | Default | Description |
-|---------|---------|-------------|
-| `handoff.autoRefresh` | `true` | Watch `.handoff/` for changes and refresh automatically |
-| `handoff.locale` | `"auto"` | UI language (`en` or `ja`). `auto` = follow VS Code |
-| `handoff.defaultView` | `dashboard` | Default panel view when opening Handoff |
-| `handoff.statusBar.enabled` | `true` | Show task count and timer in the status bar |
-| `handoff.gantt.defaultScale` | `day` | Gantt chart time scale (`day` or `week`) |
-| `handoff.timeTracker.idleTimeoutMinutes` | `3` | Minutes of inactivity before pausing the timer |
-| `handoff.taskExplorer.sortBy` | `order` | Default sort: `order`, `priority`, `updated`, `created`, `due` |
+| Setting                                  | Default     | Description                                                    |
+| ---------------------------------------- | ----------- | -------------------------------------------------------------- |
+| `handoff.autoRefresh`                    | `true`      | Watch `.handoff/` for changes and refresh automatically        |
+| `handoff.locale`                         | `"auto"`    | UI language (`en` or `ja`). `auto` = follow VS Code            |
+| `handoff.defaultView`                    | `dashboard` | Default panel view when opening Handoff                        |
+| `handoff.statusBar.enabled`              | `true`      | Show task count and timer in the status bar                    |
+| `handoff.gantt.defaultScale`             | `day`       | Gantt chart time scale (`day` or `week`)                       |
+| `handoff.timeTracker.idleTimeoutMinutes` | `3`         | Minutes of inactivity before pausing the timer                 |
+| `handoff.taskExplorer.sortBy`            | `order`     | Default sort: `order`, `priority`, `updated`, `created`, `due` |
 
 For the full list of 22 settings plus `config.toml` reference, see [Configuration](docs/wiki/Configuration.md).
 
