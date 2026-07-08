@@ -21,9 +21,11 @@
 
 **Task Explorer** — Tree view with status icons, priority badges, and milestone filtering. Click any task to open its detail panel with done-criteria checklist, schedule, and time tracking.
 
+**Nested Workspaces** — Recursively scans a workspace for multiple `.handoff/` directories (e.g. a monorepo with sub-projects), groups tasks by project in the Task Explorer, and tags task cards with a project badge. A shared project selector filters the Dashboard, Gantt Chart, Metrics, Team Panel, and Session Timeline consistently, with your selection remembered across reloads.
+
 **Dashboard** — Project overview showing task counts by status, completion percentage, effort budget burn-down, Kanban board, work timeline, and recent activity feed.
 
-**Gantt Chart** — Interactive timeline with month/day headers, drag-to-reschedule, milestone grouping, and auto-scroll to today.
+**Gantt Chart** — Interactive timeline with month/day headers, drag-to-reschedule, milestone grouping, auto-scroll to today, and hide-completed/per-row visibility toggles to declutter long-running projects.
 
 ![Gantt Chart](docs/screenshots/gantt-chart.png)
 

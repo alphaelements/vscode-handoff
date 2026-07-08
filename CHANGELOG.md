@@ -2,6 +2,22 @@
 
 All notable changes to the Handoff VSCode extension will be documented here.
 
+## [0.8.0] — 2026-07-08
+
+### Added
+
+- **Nested Workspace Support** — Recursive scan for `.handoff` directories across a workspace, with project grouping in the Task Explorer, project badges on task cards, and collision-safe task IDs across projects
+- **Unified Project Filter** — A shared project selector now drives Dashboard, Gantt Chart, Metrics, Team Panel, and Session Timeline consistently, with selection persisted across reloads
+- **Gantt Visibility Toggles** — Hide-completed toggle plus per-row hide/show with an individual restore popup, persisted in `config.toml`
+
+### Changed
+
+- **Projection Accuracy** — Done/skipped tasks now use `actual_hours` instead of `estimate_hours` in workload heat gauge, auto-scheduler leveling, and Team/Metrics panel stats, so future estimates aren't inflated by completed work
+
+### Fixed
+
+- **Project Selector Crash** — Switching projects while a Gantt assignee filter was active could blank the entire GUI. The root cause was a React rules-of-hooks violation (an early return before hooks in `GanttChart`); fixed by moving the empty-state guard into conditional JSX so hooks always run. Also added a root-level ErrorBoundary and defensive guards on `done_criteria`/`labels` access to contain future render crashes
+
 ## [0.7.0] — 2026-07-05
 
 ### Added
