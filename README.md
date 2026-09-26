@@ -21,9 +21,11 @@
 
 **Task Explorer** — Tree view with status icons, priority badges, and milestone filtering. Click any task to open its detail panel with done-criteria checklist, schedule, and time tracking.
 
+**Nested Workspaces** — Recursively scans a workspace for multiple `.handoff/` directories (e.g. a monorepo with sub-projects), groups tasks by project in the Task Explorer, and tags task cards with a project badge. A shared project selector filters the Dashboard, Gantt Chart, Metrics, Team Panel, and Session Timeline consistently, with your selection remembered across reloads.
+
 **Dashboard** — Project overview showing task counts by status, completion percentage, effort budget burn-down, Kanban board, work timeline, and recent activity feed.
 
-**Gantt Chart** — Interactive timeline with month/day headers, drag-to-reschedule, milestone grouping, and auto-scroll to today.
+**Gantt Chart** — Interactive timeline with month/day headers, drag-to-reschedule, milestone grouping, auto-scroll to today, and hide-completed/per-row visibility toggles to declutter long-running projects.
 
 ![Gantt Chart](docs/screenshots/gantt-chart.png)
 
@@ -38,6 +40,12 @@
 **Session Browser** — Browse AI session history with summaries, decisions, blockers, and file pointers from each handoff.
 
 **Effort Budget** — Configure total project hours in `config.toml`. The dashboard shows remaining budget and burn rate.
+
+**Documents** — Browse the project's specs, designs and notes managed by handoff-mcp: a Documents sidebar, a Markdown viewer with section editing, a verification matrix per document, and a relationship graph.
+
+**Requirements Traceability** — See every requirement's priority, development stage, linked tasks and code/test references in the Requirements view and the Requirements Explorer sidebar. Coverage also appears on Kanban cards, Gantt bars and task details. Requires handoff-mcp 0.36.0 or later.
+
+**Multi-Worktree Overview** — When several AI agents work in parallel git worktrees, the Dashboard shows each agent, its claimed tasks, progress per worktree and merge status against `main`.
 
 ## Setup
 
