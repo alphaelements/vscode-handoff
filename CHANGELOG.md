@@ -2,6 +2,64 @@
 
 All notable changes to the Handoff VSCode extension will be documented here.
 
+## [0.12.0] — 2026-09-26
+
+### Added
+
+- **Requirements view** — A table-centric requirements view (works with handoff-mcp 0.36.0+): KPI summary (total / implemented / tested / verified / P0 not started), P0 alert banner, remaining-work summary, category progress, per-task coverage, and a sortable, filterable requirements table with an expandable detail panel (code and test references, linked tasks, jump to the document)
+- **Requirements Explorer** — New sidebar tree grouped by category, priority or development stage, with "no tests" / "P0 only" / advanced filters and inline actions (set development stage, create a task for a requirement, open the requirement in its document, open code/test references, backfill stable IDs)
+- **Verification matrix sub-items** — Requirement items in the document viewer with stable ID, priority and development stage; bulk check and bulk stage change; filter bar; linked-task badges
+- **Coverage indicators** — Requirement coverage on Kanban cards, Gantt bars and the task detail's spec coverage section
+- **Faster requirements loading** — Reads the requirement item list from handoff-mcp's `_requirements_summary.json` instead of opening every document
+
+### Changed
+
+- **Development stage badges** — Colour-coded by stage in the requirements table
+
+### Fixed
+
+- **Render errors** — Errors caught by the webview are now written to the "Handoff" output channel instead of being lost in the hidden webview console
+
+## [0.11.0] — 2026-08-25
+
+### Added
+
+- **Multi-worktree overview** — When several AI agents work in separate git worktrees, the Dashboard shows active agents, claimed tasks with lease time, progress per worktree, merge status against `main` (merged / unmerged / conflict risk, with suggested merge order) and which session runs in which worktree
+- **Worktree filter and session scope** — Filter the Task Explorer by worktree; sessions show their scope (primary / worktree / ephemeral); task locks and lease expiry are shown on tasks
+- **Session-loop progress** — Progress of automated session loops is visible per worktree
+
+## [0.10.2] — 2026-07-31
+
+### Fixed
+
+- **Malformed documents** — A document with broken YAML frontmatter is skipped and reported in the output channel instead of crashing the extension
+
+## [0.10.1] — 2026-07-21
+
+### Fixed
+
+- **Stale views** — Data reloads when the panel or the task tree regains focus, so changes made by AI agents show up without a manual refresh
+
+## [0.10.0] — 2026-07-19
+
+### Added
+
+- **Document graph** — Task nodes, shared-scope links, a verification-progress ring on each document, tooltips and an improved layout
+
+### Changed
+
+- **Document storage** — Documents are read from single Markdown files with YAML frontmatter (handoff-mcp's current format)
+
+### Fixed
+
+- **Gantt** — Drag dead zone, assignee filter reset, and the empty state of the workload heat gauge
+
+## [0.9.0] — 2026-07-15
+
+### Added
+
+- **Document management** — Documents sidebar (grouped by type, with sections), a document viewer with rendered Markdown and section editing, cross-reference view in the bottom panel, and a document relationship graph
+
 ## [0.8.0] — 2026-07-08
 
 ### Added

@@ -41,6 +41,12 @@
 
 **Effort Budget** — Configure total project hours in `config.toml`. The dashboard shows remaining budget and burn rate.
 
+**Documents** — Browse the project's specs, designs and notes managed by handoff-mcp: a Documents sidebar, a Markdown viewer with section editing, a verification matrix per document, and a relationship graph.
+
+**Requirements Traceability** — See every requirement's priority, development stage, linked tasks and code/test references in the Requirements view and the Requirements Explorer sidebar. Coverage also appears on Kanban cards, Gantt bars and task details. Requires handoff-mcp 0.36.0 or later.
+
+**Multi-Worktree Overview** — When several AI agents work in parallel git worktrees, the Dashboard shows each agent, its claimed tasks, progress per worktree and merge status against `main`.
+
 ## Setup
 
 ### 1. Install handoff-mcp (the MCP server)
