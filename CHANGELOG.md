@@ -2,6 +2,96 @@
 
 All notable changes to the Handoff VSCode extension will be documented here.
 
+## [0.16.0] — 2026-11-18
+
+### Added
+
+- **Review Board** — Structured review panel for browsing check items, memos, and watchers from handoff-mcp review sessions. Status/category/watcher filters, image compare with side-by-side/overlay/diff display modes, inline editing, MCP-driven resolve and decision recording, content-hash change detection, and pending-badge indicators.
+- **PDF & Report Export** — Export documents, reports, or full project bundles to PDF via Typst or WeasyPrint. Template picker for branded output; chart images embedded in report sections.
+- **Chart Image Export** — Export dashboard, Gantt, Kanban board, and metrics charts as PNG via MCP file-channel. SVG legends with series labels and Y-axis labels on all chart types. View-specific dispatch and filter application.
+- **VRT (Visual Regression Testing)** — Three-pane golden/actual/diff image compare with approval gate. VRT verdict badges on requirements and campaigns. Inline thumbnails in Requirements Explorer.
+- **HTML Mock Preview** — Preview GUI mock HTML files directly from document sections.
+- **Roadmap View** — Visual phase-progress timeline with completion status and date ranges.
+- **Test Spec Panel** — View test specifications with method, environment, preconditions, and steps.
+- **Requirements Explorer** — `goToVerifies` navigation, layer filter dropdown, test-item icon.
+- Mermaid rendering in documents via configurable external command
+- Cross-layer trace navigation between requirement layers
+
+### Improved
+
+- Home section: removed Mermaid chart (replaced by chart image export); auto-panel creation for first open
+- Chart legends: consistent SVG legends across all chart types with auto-positioned labels
+
+## [0.15.0] — 2026-10-27
+
+### Added
+
+- **Milestone TreeView** — Dedicated Activity Bar panel listing all milestones with status, progress, date, and color; filter by status
+- **Milestone commands** — `changeMilestoneStatus` and `filterMilestones` for quick management
+- **Mock attribute display** — Requirements Explorer shows mock/golden icons
+- **Gantt Chart milestones** — Milestone markers rendered as diamond shapes on the Gantt timeline
+
+### Improved
+
+- Requirement Mindmap: tree filter switched from dim to hide mode
+
+### Fixed
+
+- E2E test fixes for handoff-mcp v0.43.0 compatibility
+
+## [0.14.1] — 2026-10-24
+
+### Fixed
+
+- Trace Table: requirements mode now shows all items when V-model mode is unavailable
+- Requirement Mindmap: default layer changed to first non-brainstorm left layer
+- Requirement Mindmap: added layer selector dropdown when multiple left layers exist
+
+## [0.14.0] — 2026-10-18
+
+### Added
+
+- **Requirement Mindmap** — Interactive 2D tree visualization of V-model traceability data with SVG + Canvas dual backend, d3-hierarchy layout (tree / radial modes), 4-level LOD, viewport culling, expand/collapse, filter panel, context menu, keyboard navigation, Inspector integration, high-contrast theme support, and ARIA accessibility
+- handoff-mcp CLI: trace tree action commands
+
+### Fixed
+
+- ErrorBoundary: host message listener moved outside boundary to survive React crashes
+- Context menu: disabled states for items without documents or linked tasks
+- Focus ring visibility improved
+
+## [0.13.0] — 2026-10-15
+
+### Added
+
+- **5-Section Shell** — Rebuilt UI with header + 5 navigable sections (Home, Work, Specs, Plan, Sessions) and Inspector-centric navigation
+- **Requirements Explorer** — TreeView with inline operations, grouping, and coverage filters
+- **V-model Map** — Layer visualization with drill-down
+- **Trace Matrix / Table** — N×M requirement–test traceability matrix
+- **Coverage Trend Chart** — Track requirement coverage over time
+- **Inspector** — Context-sensitive detail panel with selection model for tasks, documents, sessions, referrals, and requirements
+- **Document Viewer** — Section outlines, verification state, SubItem UI, treemap, impact analysis
+- **Suspect / Stale Display** — Suspect banners in editor and explorer
+- **Diagnostics UI** — Health cards with WHY/HOW guidance
+- **Diagram Rendering** — Inline SVG for `plantuml` / `aelm` code blocks
+- **Create Task form** — Header **+ Task** button with requirement links
+- **Document links** — Link/unlink documents from Inspector (undoable)
+- **Verification Campaign UI** — Browse campaigns, record checks, attach evidence
+- **Report Explorer** — Browse, manage, and approve reports with template editing
+- **Metrics Snapshot Trend Charts** — Effort and velocity trends over time
+- **Plan Document Explorer** — Browse plan documents with coverage indicators
+- **Gantt Enhancements** — Plan filter, baseline comparison bars, suspect highlighting
+
+### Changed
+
+- UI rebuilt on V1 architecture
+- TraceGraph replaced with table-centric trace matrix
+- Removed deprecated settings and commands
+
+### Fixed
+
+- Timer double-counting, stale banner timer, React hooks warnings, render error reporting
+
 ## [0.12.0] — 2026-09-26
 
 ### Added

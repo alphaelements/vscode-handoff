@@ -47,6 +47,20 @@
 
 **Multi-Worktree Overview** — When several AI agents work in parallel git worktrees, the Dashboard shows each agent, its claimed tasks, progress per worktree and merge status against `main`.
 
+**PDF & Report Export** — Export individual documents, reports, or entire project bundles to PDF via Typst or WeasyPrint. Template picker for branded output. Chart images embedded in report sections.
+
+**Chart Image Export** — Export dashboard, Gantt, Kanban board, and metrics charts as PNG via MCP file-channel requests. SVG legends with series labels and Y-axis units on all chart types.
+
+**VRT (Visual Regression Testing)** — Three-pane golden/actual/diff image compare with similarity percentage. Approve or reject from the UI. VRT verdict badges on requirements and campaign checklists. Inline thumbnails in the Requirements Explorer.
+
+**Review Board** — Structured review panel for browsing check items, memos, and watchers from handoff-mcp review sessions. Status/category/watcher filters, image compare with side-by-side/overlay/diff display modes, inline editing, MCP-driven resolve and decision recording, and pending-badge indicators.
+
+**HTML Mock Preview** — Preview GUI mock HTML files directly in the extension with one click from document sections.
+
+**Roadmap View** — Visual phase-progress timeline showing project phases with completion status and date ranges.
+
+**Test Spec Panel** — View test specifications with method, environment, preconditions, and steps. Navigate from requirement to its verifying test items.
+
 ## Setup
 
 ### 1. Install handoff-mcp (the MCP server)
